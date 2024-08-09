@@ -11,11 +11,9 @@ app.use(cors());
 
 async function main() {
   await mongoose.connect('mongodb+srv://pappuovi8:49YBUjc3OnHZOLcZ@blog-reciepes-data.devec5p.mongodb.net/?retryWrites=true&w=majority&appName=blog-reciepes-data');
-
-  app.get('/', (req, res) => {
-    res.send('Recipe App Server is running.')
-  })
 }
+
+
 
 main().then(()=> console.log("Mongodb Connected Successfully!")).catch(err => console.log(err));
 
@@ -26,6 +24,9 @@ const CategoryRoutes=require("./src/routes/categoryRoute")
 app.use('/api',ItemRoutes);
 app.use('/api',CategoryRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Recipe App Server is running.')
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
